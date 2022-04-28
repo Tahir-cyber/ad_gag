@@ -1,0 +1,147 @@
+class Article {
+  final String name;
+  final String title;
+  final String imageUrl;
+  final int comments;
+  final int view;
+  final String date;
+  final String web;
+  final String location;
+  final String category;
+
+  Article({
+    required this.category,
+    required this.location,
+    required this.name,
+    required this.web,
+    required this.title,
+    required this.comments,
+    required this.view,
+    required this.date,
+    required this.imageUrl,
+  });
+}
+
+List<Article> articles = [
+  Article(
+    category: "funny",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Fahad Hussain',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 333,
+    comments: 7,
+    date: "22 hrs",
+    imageUrl: 'assets/Images/john.png',
+  ),
+  Article(
+    category: "funny",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Fahad Hussain',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 333,
+    comments: 7,
+    date: "22 hrs",
+    imageUrl: 'assets/Images/john.png',
+  ),
+  Article(
+    category: "funny",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Fahad Hussain',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 333,
+    comments: 7,
+    date: "22 hrs",
+    imageUrl: 'assets/Images/john.png',
+  ),
+  Article(
+    category: "WTF",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Fahad Hussain',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 33,
+    comments: 7,
+    date: "8hrs",
+    imageUrl: 'assets/Images/natasha.png',
+  ),
+  Article(
+    category: "Girls",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Subhan Ali',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "7hrs",
+    imageUrl: 'assets/Images/oliva.png',
+  ),
+  Article(
+    category: "Meme",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Arbab Shujat',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "25 / 10 / 2021",
+    imageUrl: 'assets/Images/john.png',
+  ),
+  Article(
+    category: "Gifs",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Subhan Ali',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "4hrs",
+    imageUrl: 'assets/Images/john.png',
+  ),
+  Article(
+    category: "Celebrity",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Arbab Shujat',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "25 / 10 / 2021",
+    imageUrl: 'assets/Images/natasha.png',
+  ),
+  Article(
+    category: "Music",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Arbab Shujat',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "10hrs",
+    imageUrl: 'assets/Images/oliva.png',
+  ),
+  Article(
+    category: "Funny",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Subhan Ali',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "0hrs",
+    imageUrl: 'assets/Images/natasha.png',
+  ),
+  Article(
+    category: "beauity",
+    location: "down town",
+    web: "www.google.com",
+    name: 'Arbab Shujat',
+    title: 'Certainty listening no behavior existence assurance situation',
+    view: 387,
+    comments: 24,
+    date: "25hrs",
+    imageUrl: 'assets/Images/john.png',
+  ),
+];
