@@ -70,7 +70,7 @@ class _NowPremiumState extends State<NowPremium> {
                 padding: 20,
                 onTap: () {},
                 widget: Image.asset(
-                  "assets/Icons/upvote.png",
+                  "assets/Icons/upload.png",
                   height: 25.h,
                   width: 15,
                 ),

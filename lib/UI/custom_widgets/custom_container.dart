@@ -1,3 +1,6 @@
+import 'package:ad_gag/UI/custom_widgets/custom_button.dart';
+import 'package:ad_gag/UI/custom_widgets/switch_Button.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,7 +56,8 @@ Widget shareContainer2(
   );
 }
 
-Widget ImageContainer({required String image,required double height,required double width}) {
+Widget ImageContainer(
+    {required String image, required double height, required double width}) {
   return Container(
     height: height,
     width: width,
@@ -65,5 +69,57 @@ Widget ImageContainer({required String image,required double height,required dou
             )),
         color: kLightBlueColor,
         borderRadius: BorderRadius.circular(10)),
+  );
+}
+
+Widget editProfileContainer(
+    String text, double radius, Color color, double height, double width) {
+  return Container(
+    padding: EdgeInsets.only(left: 20.w),
+    height: height,
+    width: width,
+    decoration: BoxDecoration(
+        color: color, borderRadius: BorderRadius.circular(radius)),
+    child: Row(
+      children: [
+        SizedBox(
+          width: 6.w,
+        ),
+        Text(text,
+            style: TextStyle(
+              color: kGreyColor,
+              fontSize: 12,
+            )),
+        Spacer(),
+        CustomSwitchButton()
+      ],
+    ),
+  );
+}
+
+Widget uploaddocContainer(
+    {context, required VoidCallback buttonontap, required String text}) {
+  return DottedBorder(
+    strokeWidth: 2,
+    dashPattern: [10, 6],
+    radius: Radius.circular(10),
+    color: kGreyColor,
+    child: Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+          color: klightgreyColor, borderRadius: BorderRadius.circular(10)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          buttonContainer(
+              widget: Icon(Icons.file_upload_outlined),
+              radius: 30,
+              onTap: buttonontap),
+          SizedBox(height: 5.h),
+          Text(text)
+        ],
+      ),
+    ),
   );
 }

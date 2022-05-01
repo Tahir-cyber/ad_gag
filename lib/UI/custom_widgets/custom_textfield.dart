@@ -17,8 +17,13 @@ class GeneralTextField extends StatefulWidget {
   IconData? prefixIcon;
   double? padding;
   VoidCallback? replyontap;
+  Color? prefIconColor;
+  double? contenthorizontalpadding;
+  double? contentverticalpadding;
 
   GeneralTextField({
+    this.contenthorizontalpadding,
+    this.contentverticalpadding,
     this.replyontap,
     this.padding,
     this.suffixIcon,
@@ -27,6 +32,7 @@ class GeneralTextField extends StatefulWidget {
     this.validator,
     this.textInputType,
     this.onsaved,
+    this.prefIconColor,
     required this.hintText,
     required this.controller,
     this.trailingIcon,
@@ -51,18 +57,19 @@ class _GeneralTextFieldState extends State<GeneralTextField> {
         ),
         controller: widget.controller,
         decoration: InputDecoration(
-
-          prefixIcon: Icon(widget.prefixIcon),
-          suffixIcon: InkWell(
-            onTap: widget.replyontap,
-            child: Icon(widget.suffixIcon)),
+          prefixIcon: Icon(
+            widget.prefixIcon,
+            color: widget.prefIconColor,
+          ),
+          suffixIcon:
+              InkWell(onTap: widget.replyontap, child: Icon(widget.suffixIcon)),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none),
           // isCollapsed: false,
           // isDense: false,
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+              EdgeInsets.symmetric(horizontal:25.w, vertical: 10.h),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none),

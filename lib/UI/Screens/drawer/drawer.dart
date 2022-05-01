@@ -1,6 +1,8 @@
 import 'package:ad_gag/Core/constant/colors.dart';
 import 'package:ad_gag/Core/constant/custom_textfield_decoration.dart';
+import 'package:ad_gag/UI/Screens/about_us/about_us_screen.dart';
 import 'package:ad_gag/UI/Screens/category_screen/category_screen.dart';
+import 'package:ad_gag/UI/Screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:ad_gag/UI/Screens/savedpost/savedpost_screen.dart';
 import 'package:ad_gag/UI/Screens/settings_screen/settings_screen.dart';
 import 'package:ad_gag/UI/Screens/upgrade_to_premium/upgrade_to_premium.dart';
@@ -9,6 +11,8 @@ import 'package:ad_gag/UI/custom_widgets/custom_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import '../MyProfile/myprofile_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -40,31 +44,59 @@ class CustomDrawer extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: Container(
-                      width: 80.w,
-                      height: 80.h,
-                      decoration: BoxDecoration(
-                        color: kLightBlueColor,
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      child: Image.asset(
-                        "assets/Images/Rectangle.png",
-                        fit: BoxFit.cover,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyProfileScreen(
+                                    image: "assets/Images/Rectangle.png",
+                                    email: "charlotte22@email.com",
+                                    name: "Charlotte")));
+                      },
+                      child: Container(
+                        width: 80.w,
+                        height: 80.h,
+                        decoration: BoxDecoration(
+                          color: kLightBlueColor,
+                          borderRadius: BorderRadius.circular(20.r),
+                        ),
+                        child: Image.asset(
+                          "assets/Images/Rectangle.png",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
                   //>>>>>>>>>>>>>>>>>>//
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Charlotte",
-                        style: kCustomTextTextStyle(18, kwhiteColor),
-                      ),
-                      Text(
-                        "charlotte22@email.com",
-                        style: kCustomTextTextStyle(12, kwhiteColor),
+                      Spacer(flex: 4),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyProfileScreen(
+                                        image: "assets/Images/Rectangle.png",
+                                        email: "charlotte22@email.com",
+                                        name: "Charlotte",
+                                      )));
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Charlotte",
+                              style: kCustomTextTextStyle(18, kwhiteColor),
+                            ),
+                            Text(
+                              "charlotte22@email.com",
+                              style: kCustomTextTextStyle(12, kwhiteColor),
+                            ),
+                          ],
+                        ),
                       ),
                       drawerButton(
                           textsize: 10,
@@ -72,8 +104,14 @@ class CustomDrawer extends StatelessWidget {
                           color: kwhiteColor,
                           width: 100.w,
                           height: 30.h,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditProfileScreen()));
+                          },
                           textColor: kblackColor),
+                      Spacer()
                     ],
                   ),
                   Spacer(),
@@ -97,7 +135,10 @@ class CustomDrawer extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   drawerRow(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SavedPostScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SavedPostScreen()));
                     },
                     sizedBoxWidth: 20.w,
                     padding: 25.w,
@@ -159,7 +200,10 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   drawerRow(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AboutUs()));
+                    },
                     sizedBoxWidth: 20.w,
                     padding: 25.w,
                     widget: Image.asset(

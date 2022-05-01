@@ -112,7 +112,7 @@ Widget drawerRow(
   );
 }
 
-Widget upperTitleRow({required String text,required VoidCallback onTap}) {
+Widget upperTitleRow({required String text, required VoidCallback onTap}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
@@ -126,6 +126,37 @@ Widget upperTitleRow({required String text,required VoidCallback onTap}) {
         ),
       ),
       const SizedBox(width: 20),
+    ],
+  );
+}
+
+Widget myProfileRowIcon(String image,String text) {
+  return Row(
+    children: [
+      Image.asset(
+        image,
+        height: 12,
+      ),
+      Text(
+        text,
+        style: kCustomTextTextStyle(12.sp, kblackColor),
+      )
+    ],
+  );
+}
+
+Widget myProfileRowText(String text1,String text) {
+  return Row(
+    children: [
+       Text(
+        text1,
+        style: kCustomTextTextStyle(12.sp, kGreyColor),
+      ),
+      
+      Text(
+        text,
+        style: kCustomTextTextStyle(12.sp, kblackColor),
+      )
     ],
   );
 }

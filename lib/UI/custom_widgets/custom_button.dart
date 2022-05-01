@@ -3,12 +3,16 @@ import 'package:ad_gag/Core/constant/custom_textfield_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget customButton1({required String text, required VoidCallback onPressed}) {
+Widget customButton1(
+    {required String text,
+    required VoidCallback onPressed,
+    double? width,
+    double? minwidth}) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 20.w),
     child: MaterialButton(
       height: 50.h,
-      minWidth: 266.w,
+      minWidth: minwidth != null ? minwidth : 266.w,
       color: const Color(0xFF0D7592),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
@@ -88,6 +92,48 @@ Widget customButton3(
     required Widget widget,
     required VoidCallback onPressed,
     required double height,
+    Color? bordercolor,
+    double? fontSize,
+    Widget? widget2,
+    MainAxisAlignment? mainAxisAlignment,
+    required double width}) {
+  return SizedBox(
+    width: width,
+    child: MaterialButton(
+      height: height,
+      elevation: 0,
+      color: buttonColor,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+          side: BorderSide(
+              color: bordercolor != null ? bordercolor : Colors.transparent)),
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment:mainAxisAlignment!=null? mainAxisAlignment:MainAxisAlignment.center,
+        children: [
+          widget,
+          SizedBox(width: 7.w),
+          Text(
+            text,
+            style: TextStyle(
+                fontSize: fontSize != null ? fontSize : 8, color: textcolor),
+          ),
+          
+          widget2 != null ? widget2 : Container(),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget customButton4(
+    {required String text,
+    required Color buttonColor,
+    required Color textcolor,
+    required Widget widget,
+    required VoidCallback onPressed,
+    required double height,
+    Widget? widget2,
     required double width}) {
   return SizedBox(
     width: width,
@@ -108,6 +154,7 @@ Widget customButton3(
             text,
             style: TextStyle(color: textcolor),
           ),
+          widget2 != null ? widget2 : Container(),
         ],
       ),
     ),
@@ -126,6 +173,26 @@ Widget upgradeFloatingButton({required VoidCallback onTap}) {
         color: klightgreyColor,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.red),
+      ),
+    ),
+  );
+}
+
+Widget textButton(
+    {required VoidCallback onTap,
+    required Widget widget,
+    required double height,
+    required double width}) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
+      height: height,
+      width: width,
+      child: widget,
+      decoration: BoxDecoration(
+        color: kLightBlueColor,
+        borderRadius: BorderRadius.circular(20),
       ),
     ),
   );
@@ -215,13 +282,18 @@ Widget backButton() {
   );
 }
 
-Widget buttonContainer(
-    {required Widget widget,
-    required double radius,
-    required VoidCallback onTap}) {
+Widget buttonContainer({
+  required Widget widget,
+  required double radius,
+  required VoidCallback onTap,
+  double? height,
+  double? width,
+}) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
+      height: height != null ? height : 30,
+      width: width != null ? width : 30,
       child: widget,
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(

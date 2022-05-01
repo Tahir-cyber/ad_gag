@@ -78,6 +78,6 @@ class _NotificationSettingContainerState
         ],
       ),
     );
-    ;
+    
   }
 }

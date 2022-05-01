@@ -2,6 +2,7 @@ import 'package:ad_gag/Core/constant/colors.dart';
 import 'package:ad_gag/Core/constant/custom_textfield_decoration.dart';
 import 'package:ad_gag/UI/Screens/Sign_up/sign_up_screen.dart';
 import 'package:ad_gag/UI/Screens/home_screen/home_screen.dart';
+import 'package:ad_gag/UI/Screens/phoneLogin/phonelogin_screen.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_button.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
           SizedBox(height: 53.h),
           InkWell(
             onTap: () {
-              Get.to(const SignUp());
+              Get.to(SignUp());
             },
             child: Center(
               child: Text(
@@ -94,9 +95,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Center(
-            child: Text(
-              "To join the community",
-              style: kCustomTextTextStyle(16, kGreyColor),
+            child: InkWell(
+              onTap: () {
+                Get.to(PhoneLogin());
+              },
+              child: Text(
+                "To join the community",
+                style: kCustomTextTextStyle(16, kGreyColor),
+              ),
             ),
           ),
           SizedBox(height: 28.h),

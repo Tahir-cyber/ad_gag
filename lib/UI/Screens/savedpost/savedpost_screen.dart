@@ -47,136 +47,91 @@ class _SavedPostScreenState extends State<SavedPostScreen> {
                           onTap: () {},
                           child: Column(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20.w, vertical: 10.h),
-                                //main row
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundImage:
-                                          AssetImage(articles[index].imageUrl),
-                                      radius: 30.h,
-                                    ),
-                                    SizedBox(
-                                      width: 20.w,
-                                    ),
-                                    //column for title and info
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              articles[index].name,
-                                              style: TextStyle(
-                                                  fontSize: 14.sp,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            SizedBox(
-                                              width: 10.h,
-                                            ),
-                                           
-                                          ],
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage:
+                                        AssetImage(articles[index].imageUrl),
+                                    radius: 30.h,
+                                  ),
+                                  SizedBox(
+                                    width: 20.w,
+                                  ),
+                                  //column for title and info
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 5.h),
+                                      Text(
+                                        articles[index].name,
+                                        style: TextStyle(
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
                                         ),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                const Icon(
-                                                  Icons.language,
-                                                  color: kGreyColor,
-                                                  size: 10,
-                                                ),
-                                                const SizedBox(width: 5),
-                                                Text(
-                                                  articles[index].web,
-                                                  style: kCustomTextTextStyle(
-                                                      12, kGreyColor),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 10.h,
-                                            ),
-                                            Icon(
-                                              Icons.location_on,
-                                              color: kGreyColor,
-                                              size: 10.sp,
-                                            ),
-                                            const SizedBox(width: 5),
-                                            Text(
-                                              articles[index].location,
-                                              style: kCustomTextTextStyle(
-                                                  10, kGreyColor),
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    const Spacer(),
-
-                                    Center(
-                                      child: Image.asset(
-                                        "assets/Icons/savepost.png",
-                                        height: 15.h,
-                                        width: 10.w,
                                       ),
+                                      Text(
+                                        articles[index].date,
+                                        style: kCustomTextTextStyle(
+                                            10, kGreyColor),
+                                      ),
+                                    ],
+                                  ),
+                                  const Spacer(),
+                                  const Spacer(),
+
+                                  Center(
+                                    child: Image.asset(
+                                      "assets/Icons/savepost.png",
+                                      height: 15.h,
+                                      width: 10.w,
                                     ),
-                                    const AlertScreen()
-                                  ],
-                                ),
+                                  ),
+                                  const AlertScreen()
+                                ],
                               ),
                               SizedBox(
                                 height: 10.h,
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      height: 30.h,
-                                      width: 100.w,
-                                      child: SingleChildScrollView(
-                                        physics: const ScrollPhysics(),
-                                        scrollDirection: Axis.horizontal,
-                                        child: Text(
-                                          articles[index].title,
-                                          style: kBlackTextTextStyle(16),
-                                        ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    height: 30.h,
+                                    width: 100.w,
+                                    child: SingleChildScrollView(
+                                      physics: const ScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Text(
+                                        articles[index].title,
+                                        style: kBlackTextTextStyle(16),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w),
-                                      child: SizedBox(
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              articles[index].category,
-                                              style: kCustomTextTextStyle(
-                                                  10, kGreyColor),
-                                            ),
-                                            const Icon(
-                                              Icons.share,
-                                              size: 10,
-                                              color: kGreyColor,
-                                            )
-                                          ],
-                                        ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10.w),
+                                    child: SizedBox(
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            articles[index].category,
+                                            style: kCustomTextTextStyle(
+                                                10, kGreyColor),
+                                          ),
+                                          const Icon(
+                                            Icons.share,
+                                            size: 10,
+                                            color: kGreyColor,
+                                          )
+                                        ],
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                               SizedBox(
                                 height: 6.h,
