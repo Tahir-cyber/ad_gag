@@ -15,19 +15,28 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  List<Article> tempArray = [];
   int? selectIndex;
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: customButton3(
-          buttonColor: kLightBlueColor,
-          text: "Save Prefrences",
-          textcolor: kwhiteColor,
-          widget: Text(""),
-          onPressed: () {},
-          height: 40,
-          width: 0.70.sw),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: 10.h),
+        child: customButton3(
+            fontSize: 16,
+            buttonColor: kLightBlueColor,
+            text: "Save Prefrences ${tempArray.length}",
+            textcolor: kwhiteColor,
+            widget: Text(""),
+            onPressed: () {
+              
+            },
+            height: 50.h,
+            width: 0.70.sw),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -38,40 +47,54 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 onTap: () {
                   Navigator.pop(context);
                 }),
+            SizedBox(height: 20.h),
             Expanded(
-                child: ListView.builder(
-                    itemCount: articles.length,
-                    itemBuilder: ((context, index) {
-                      ;
-                      return Column(
-                        children: [
-                          Row(
-                            children: [
-                             ImageContainer(image: articles[index].imageUrl, height: 20, width: 20),
-                              SizedBox(width: 15.w),
-                              Text(articles[index].name),
-                              Spacer(),
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    selectIndex = index;
-                                  });
-                                },
-                                child: selectIndex != index
-                                    ? Icon(
-                                        Icons.star_outline_rounded,
-                                      )
-                                    : Icon(
-                                        Icons.star,
-                                        color: Colors.yellow,
-                                      ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10.h),
-                        ],
-                      );
-                    })))
+              child: Stack(
+                children: [
+                  ListView.builder(
+                      itemCount: articles.length,
+                      itemBuilder: ((context, index) {
+                        return Column(
+                          children: [
+                            Row(
+                              children: [
+                                ImageContainer(
+                                    image: articles[index].imageUrl,
+                                    height: 20,
+                                    width: 20),
+                                SizedBox(width: 15.w),
+                                Text(articles[index].name),
+                                Spacer(),
+                                InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        if (tempArray
+                                            .contains(articles[index])) {
+                                          tempArray.remove(articles[index]);
+                                        } else {
+                                          tempArray.add(articles[index]);
+                                        }
+                                      });
+
+                                      
+                                    },
+                                    child: tempArray.contains(articles[index])
+                                        ? Icon(
+                                            Icons.star,
+                                            color: Colors.yellow,
+                                          )
+                                        : Icon(
+                                            Icons.star_outline_rounded,
+                                          )),
+                              ],
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
+                        );
+                      })),
+                ],
+              ),
+            )
           ],
         ),
       ),

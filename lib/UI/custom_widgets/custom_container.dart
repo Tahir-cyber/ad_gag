@@ -3,6 +3,7 @@ import 'package:ad_gag/UI/custom_widgets/switch_Button.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marquee/marquee.dart';
 
 import '../../Core/constant/colors.dart';
 import '../../Core/constant/custom_textfield_decoration.dart';
@@ -73,7 +74,7 @@ Widget ImageContainer(
 }
 
 Widget editProfileContainer(
-    String text, double radius, Color color, double height, double width) {
+    String text, double radius, Color color, double height, double width,bool onToggle) {
   return Container(
     padding: EdgeInsets.only(left: 20.w),
     height: height,
@@ -91,7 +92,8 @@ Widget editProfileContainer(
               fontSize: 12,
             )),
         Spacer(),
-        CustomSwitchButton()
+       CustomSwitch2(onToggle: onToggle)
+        // CustomSwitchButton(onToggle:onToggle ,onToggleChanged: ,)
       ],
     ),
   );
@@ -120,6 +122,27 @@ Widget uploaddocContainer(
           Text(text)
         ],
       ),
+    ),
+  );
+}
+
+Widget marqueeContainer(String text) {
+  return SizedBox(
+    height: 20.h,
+    width: 200.w,
+    child: Marquee(
+      text:text,
+      style: kBlackTextTextStyle(16),
+      scrollAxis: Axis.horizontal,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      blankSpace: 20.0,
+      velocity: 30.0,
+      pauseAfterRound: Duration(seconds: 1),
+      startPadding: 10.0,
+      accelerationDuration: Duration(seconds: 1),
+      accelerationCurve: Curves.linear,
+      decelerationDuration: Duration(milliseconds: 500),
+      decelerationCurve: Curves.easeOut,
     ),
   );
 }

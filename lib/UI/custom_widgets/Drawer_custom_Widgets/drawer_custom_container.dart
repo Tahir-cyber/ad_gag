@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GeneralSettingContainer extends StatefulWidget {
   String text;
-  GeneralSettingContainer({Key? key, required this.text}) : super(key: key);
+  bool onToggle;
+  void Function(bool) onToggleChanged;
+  GeneralSettingContainer({Key? key, required this.text,required this.onToggle,required this.onToggleChanged}) : super(key: key);
 
   @override
   State<GeneralSettingContainer> createState() =>
@@ -37,7 +39,10 @@ class _GeneralSettingContainerState extends State<GeneralSettingContainer> {
                   fontSize: 12,
                   fontWeight: FontWeight.bold)),
           Spacer(),
-          CustomSwitchButton()
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: CustomSwitchButton(onToggle: widget.onToggle,onToggleChanged: widget.onToggleChanged,),
+          )
         ],
       ),
     );
@@ -46,7 +51,11 @@ class _GeneralSettingContainerState extends State<GeneralSettingContainer> {
 
 class NotificationSettingContainer extends StatefulWidget {
   String text;
-  NotificationSettingContainer({Key? key,required this.text}) : super(key: key);
+  bool onToggle;
+    void Function(bool) onToggleChanged;
+
+  NotificationSettingContainer({Key? key, required this.text,required this.onToggle,required this.onToggleChanged})
+      : super(key: key);
 
   @override
   State<NotificationSettingContainer> createState() =>
@@ -58,6 +67,7 @@ class _NotificationSettingContainerState
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding: EdgeInsets.only(left: 20.w),
       height: 30,
       width: double.infinity,
@@ -74,10 +84,12 @@ class _NotificationSettingContainerState
                   fontSize: 12,
                   fontWeight: FontWeight.bold)),
           Spacer(),
-          CustomSwitchButton()
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: CustomSwitchButton(onToggle: widget.onToggle,onToggleChanged: widget.onToggleChanged,),
+          )
         ],
       ),
     );
-    
   }
 }

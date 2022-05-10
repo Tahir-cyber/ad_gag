@@ -43,171 +43,151 @@ class _SavedPostScreenState extends State<SavedPostScreen> {
                     ),
                     child: Column(
                       children: [
-                        InkWell(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage:
-                                        AssetImage(articles[index].imageUrl),
-                                    radius: 30.h,
-                                  ),
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  //column for title and info
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 5.h),
-                                      Text(
-                                        articles[index].name,
-                                        style: TextStyle(
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                        SizedBox(height: 10.h),
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage(articles[index].imageUrl),
+                                  radius: 30.h,
+                                ),
+                                SizedBox(
+                                  width: 20.w,
+                                ),
+                                //column for title and info
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 5.h),
+                                    Text(
+                                      articles[index].name,
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                      Text(
-                                        articles[index].date,
-                                        style: kCustomTextTextStyle(
-                                            10, kGreyColor),
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  const Spacer(),
+                                    ),
+                                    SizedBox(height: 5.h),
+                                    Text(
+                                      articles[index].date,
+                                      style:
+                                          kCustomTextTextStyle(10, kGreyColor),
+                                    ),
+                                  ],
+                                ),
+                                const Spacer(),
+                                const Spacer(),
 
-                                  Center(
-                                    child: Image.asset(
-                                      "assets/Icons/savepost.png",
-                                      height: 15.h,
-                                      width: 10.w,
-                                    ),
+                                Center(
+                                  child: Image.asset(
+                                    "assets/Icons/savepost.png",
+                                    height: 20.h,
+                                    width: 15.w,
                                   ),
-                                  const AlertScreen()
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    height: 30.h,
-                                    width: 100.w,
-                                    child: SingleChildScrollView(
-                                      physics: const ScrollPhysics(),
-                                      scrollDirection: Axis.horizontal,
-                                      child: Text(
-                                        articles[index].title,
-                                        style: kBlackTextTextStyle(16),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10.w),
-                                    child: SizedBox(
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            articles[index].category,
-                                            style: kCustomTextTextStyle(
-                                                10, kGreyColor),
-                                          ),
-                                          const Icon(
-                                            Icons.share,
-                                            size: 10,
-                                            color: kGreyColor,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 6.h,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(30.r),
-                                child: SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width - 12.w,
-                                  height: 250.h,
-                                  child: Card(
-                                    child: Image.asset(
-                                      articles[index].imageUrl,
-                                      fit: BoxFit.cover,
+                                ),
+                                const AlertScreen()
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                marqueeContainer(articles[index].title),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 10.w),
+                                  child: SizedBox(
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          articles[index].category,
+                                          style: kCustomTextTextStyle(
+                                              10, kGreyColor),
+                                        ),
+                                        SizedBox(width: 5.w),
+                                        const Icon(
+                                          Icons.share,
+                                          size: 10,
+                                          color: kGreyColor,
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 6.h,
+                            ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(30.r),
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width - 12.w,
+                                height: 250.h,
+                                child: Card(
+                                  child: Image.asset(
+                                    articles[index].imageUrl,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  customContainer(
-                                      articles[index].view.toString(),
-                                      "assets/Images/upvote.png"),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Container(
-                                    height: 20.h,
-                                    width: 20.w,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFFFFFFFF),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          "assets/Images/downvote.png",
-                                          height: 10,
-                                          width: 10,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: customContainer(
-                                        articles[index].view.toString(),
-                                        "assets/Images/comment.png"),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: shareContainer2(
-                                  "share",
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                customContainer(articles[index].view.toString(),
+                                    "assets/Images/upvote.png"),
+                                SizedBox(
+                                  width: 10.w,
                                 ),
-                              )
-                            ],
-                          ),
+                                Container(
+                                  height: 20.h,
+                                  width: 20.w,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFFFFFFF),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        "assets/Images/downvote.png",
+                                        height: 10,
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                InkWell(
+                                  onTap: () {},
+                                  child: customContainer(
+                                      articles[index].view.toString(),
+                                      "assets/Images/comment.png"),
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: shareContainer2(
+                                "share",
+                              ),
+                            )
+                          ],
                         )
                       ],
                     ),

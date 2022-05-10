@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../MyProfile/myprofile_screen.dart';
+import '../login/login_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class CustomDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 170.h,
+              height: 160.h,
               decoration: BoxDecoration(
                 color: kLightBlueColor,
                 borderRadius: BorderRadius.only(
@@ -55,8 +56,8 @@ class CustomDrawer extends StatelessWidget {
                                     name: "Charlotte")));
                       },
                       child: Container(
-                        width: 80.w,
-                        height: 80.h,
+                        width: 75.w,
+                        height: 75.h,
                         decoration: BoxDecoration(
                           color: kLightBlueColor,
                           borderRadius: BorderRadius.circular(20.r),
@@ -72,7 +73,7 @@ class CustomDrawer extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Spacer(flex: 4),
+                      Spacer(flex: 2),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -89,15 +90,16 @@ class CustomDrawer extends StatelessWidget {
                           children: [
                             Text(
                               "Charlotte",
-                              style: kCustomTextTextStyle(18, kwhiteColor),
+                              style: kCustomTextTextStyle(16, kwhiteColor),
                             ),
                             Text(
                               "charlotte22@email.com",
-                              style: kCustomTextTextStyle(12, kwhiteColor),
+                              style: kCustomTextTextStyle(10, kwhiteColor),
                             ),
                           ],
                         ),
                       ),
+                      SizedBox(height: 5.h),
                       drawerButton(
                           textsize: 10,
                           text: "Edit Profile",
@@ -118,9 +120,14 @@ class CustomDrawer extends StatelessWidget {
                   Column(
                     children: [
                       Spacer(),
-                      Icon(
-                        Icons.close,
-                        color: kwhiteColor,
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: kwhiteColor,
+                        ),
                       ),
                       Spacer(flex: 4),
                     ],
@@ -243,7 +250,9 @@ class CustomDrawer extends StatelessWidget {
                 widget: Image.asset("assets/Icons/logout.png",
                     height: 25.h, width: 15.w),
                 text: "LOGOUT",
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(LoginScreen());
+                },
               ),
             ),
           ],

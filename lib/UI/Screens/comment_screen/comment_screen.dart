@@ -63,7 +63,7 @@ class _CommentOnPostScreenState extends State<CommentOnPostScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      upperTitleRow(text: "Posted",onTap: (){}),
+                      upperTitleRow(text: "Posted", onTap: () {}),
                       GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -319,89 +319,72 @@ class _CommentOnPostScreenState extends State<CommentOnPostScreen> {
                                       bottom: BorderSide(
                                           color: kGreyColor, width: 1)),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: Row(
                                   children: [
-                                    SizedBox(
-                                      height: 10.h,
+                                    CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          commentsModel[index].imageUrl),
+                                      radius: 30.h,
                                     ),
-                                    Row(children: [
-                                      CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            commentsModel[index].imageUrl),
-                                        radius: 30.h,
-                                      ),
-                                      SizedBox(
-                                        width: 20.w,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                    Spacer(
+                                      flex: 2,
+                                    ),
+                                    SizedBox(
+                                      width: 0.73.sw,
+                                      height: 100.h,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
-                                          SizedBox(
-                                            height: 30.h,
-                                            width: 0.75.sw,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Row(children: [
-                                                  Text(
-                                                    commentsModel[index].name,
-                                                    style: TextStyle(
-                                                        fontSize: 16.sp,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  SizedBox(width: 10.w),
-                                                  Text(
-                                                    commentsModel[index].date,
-                                                    style: kCustomTextTextStyle(
-                                                        10, kGreyColor),
-                                                  ),
-                                                ]),
-                                                Row(
-                                                  children: [
-                                                    Image.asset(
-                                                      "assets/Images/upvote.png",
-                                                      height: 10.h,
-                                                      width: 10.w,
-                                                    ),
-                                                    SizedBox(width: 2.w),
-                                                    Text(
-                                                      commentsModel[index]
-                                                          .view
-                                                          .toString(),
-                                                      style:
-                                                          kCustomTextTextStyle(
-                                                              10, kGreyColor),
-                                                    ),
-                                                    SizedBox(width: 10.w),
-                                                    Image.asset(
-                                                      "assets/Images/downvote.png",
-                                                      height: 10.h,
-                                                      width: 10.w,
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
+                                          Row(children: [
+                                            Text(
+                                              commentsModel[index].name,
+                                              style: TextStyle(
+                                                  fontSize: 16.sp,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: 5.h,
-                                          ),
-                                          const SizedBox(width: 5),
-                                          Container(
-                                            width: 300.w,
-                                            child: Text(
-                                              commentsModel[index].desc,
-                                              overflow: TextOverflow.ellipsis,
+                                            Text(
+                                              commentsModel[index].date,
                                               style: kCustomTextTextStyle(
                                                   10, kGreyColor),
                                             ),
+                                            Spacer(),
+                                            Image.asset(
+                                              "assets/Images/upvote.png",
+                                              height: 10.h,
+                                              width: 10.w,
+                                            ),
+                                            SizedBox(width: 3.w),
+                                            Text(
+                                              commentsModel[index]
+                                                  .view
+                                                  .toString(),
+                                              style: kCustomTextTextStyle(
+                                                  10, kGreyColor),
+                                            ),
+                                            SizedBox(width: 10.w),
+                                            Image.asset(
+                                              "assets/Images/downvote.png",
+                                              height: 10.h,
+                                              width: 10.w,
+                                            ),
+                                          ]),
+                                          SizedBox(height: 3),
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 0.45.sw,
+                                                child: Text(
+                                                  commentsModel[index].desc,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: kCustomTextTextStyle(
+                                                      10, kGreyColor),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: 15.h),
+                                          SizedBox(height: 3),
                                           selectIndex != index
                                               ? Row(
                                                   children: [
@@ -440,10 +423,8 @@ class _CommentOnPostScreenState extends State<CommentOnPostScreen> {
                                                   controller: replyController),
                                         ],
                                       ),
-                                    ]),
-                                    SizedBox(
-                                      height: 10.h,
                                     ),
+                                    Spacer()
                                   ],
                                 ),
                               );

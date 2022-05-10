@@ -1,3 +1,4 @@
+import 'package:ad_gag/UI/Screens/login/login_screen.dart';
 import 'package:ad_gag/UI/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class AdGig extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: const SplashScreen(),
+          home: LoginScreen(),
         );
       },
     );

@@ -157,13 +157,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 prefIconColor: kLightBlueColor,
               ),
               SizedBox(height: 20),
-              editProfileContainer(
-                "Online Status",
-                30.r,
-                klightgreyColor,
-                50,
-                double.infinity,
-              ),
+              editProfileContainer("Online Status", 30.r, klightgreyColor, 50,
+                  double.infinity, false),
               SizedBox(height: 10),
               Container(
                 child: TextFormField(

@@ -99,8 +99,8 @@ Widget customButton3(
     required double width}) {
   return SizedBox(
     width: width,
+    height: height,
     child: MaterialButton(
-      height: height,
       elevation: 0,
       color: buttonColor,
       shape: RoundedRectangleBorder(
@@ -109,7 +109,9 @@ Widget customButton3(
               color: bordercolor != null ? bordercolor : Colors.transparent)),
       onPressed: onPressed,
       child: Row(
-        mainAxisAlignment:mainAxisAlignment!=null? mainAxisAlignment:MainAxisAlignment.center,
+        mainAxisAlignment: mainAxisAlignment != null
+            ? mainAxisAlignment
+            : MainAxisAlignment.center,
         children: [
           widget,
           SizedBox(width: 7.w),
@@ -118,8 +120,7 @@ Widget customButton3(
             style: TextStyle(
                 fontSize: fontSize != null ? fontSize : 8, color: textcolor),
           ),
-          
-          widget2 != null ? widget2 : Container(),
+          widget2 != null ? widget2 : Text(""),
         ],
       ),
     ),
@@ -295,6 +296,34 @@ Widget buttonContainer({
       height: height != null ? height : 30,
       width: width != null ? width : 30,
       child: widget,
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          blurRadius: 1.r,
+          offset: Offset(0, 2),
+        ),
+      ], color: kwhiteColor, borderRadius: BorderRadius.circular(radius)),
+    ),
+  );
+}
+
+Widget buttonContainer2({
+  required Widget widget,
+  required double radius,
+  required VoidCallback onTap,
+  required text,
+  double? height,
+  double? width,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      height: height != null ? height : 30,
+      width: width != null ? width : 30,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [widget, Text(text)],
+      ),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),

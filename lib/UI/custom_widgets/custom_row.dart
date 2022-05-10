@@ -8,13 +8,14 @@ import '../../Core/constant/custom_textfield_decoration.dart';
 
 Widget iconTextRow(
     {required String text,
+    double? padding,
     required IconData iconData,
     required double radius,
     VoidCallback? ontap,
     required Color iconcolor,
     required Color contColor}) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 20),
+    padding:  EdgeInsets.symmetric(horizontal:padding!=null?padding:20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

@@ -8,8 +8,10 @@ class Article {
   final String web;
   final String location;
   final String category;
+  bool isSelected;
 
   Article({
+   required this.isSelected,
     required this.category,
     required this.location,
     required this.name,
@@ -24,6 +26,7 @@ class Article {
 
 List<Article> articles = [
   Article(
+    isSelected: false,
     category: "funny",
     location: "down town",
     web: "www.google.com",
@@ -35,6 +38,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/john.png',
   ),
   Article(
+    isSelected: false,
     category: "funny",
     location: "down town",
     web: "www.google.com",
@@ -46,6 +50,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/john.png',
   ),
   Article(
+    isSelected: false,
     category: "funny",
     location: "down town",
     web: "www.google.com",
@@ -57,6 +62,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/john.png',
   ),
   Article(
+    isSelected: false,
     category: "WTF",
     location: "down town",
     web: "www.google.com",
@@ -68,6 +74,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/natasha.png',
   ),
   Article(
+    isSelected: false,
     category: "Girls",
     location: "down town",
     web: "www.google.com",
@@ -79,6 +86,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/oliva.png',
   ),
   Article(
+    isSelected: false,
     category: "Meme",
     location: "down town",
     web: "www.google.com",
@@ -90,6 +98,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/john.png',
   ),
   Article(
+    isSelected: false,
     category: "Gifs",
     location: "down town",
     web: "www.google.com",
@@ -101,6 +110,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/john.png',
   ),
   Article(
+    isSelected: false,
     category: "Celebrity",
     location: "down town",
     web: "www.google.com",
@@ -112,6 +122,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/natasha.png',
   ),
   Article(
+    isSelected: false,
     category: "Music",
     location: "down town",
     web: "www.google.com",
@@ -123,6 +134,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/oliva.png',
   ),
   Article(
+    isSelected: false,
     category: "Funny",
     location: "down town",
     web: "www.google.com",
@@ -134,6 +146,7 @@ List<Article> articles = [
     imageUrl: 'assets/Images/natasha.png',
   ),
   Article(
+    isSelected: false,
     category: "beauity",
     location: "down town",
     web: "www.google.com",

@@ -1,11 +1,15 @@
 import 'package:ad_gag/Core/constant/colors.dart';
 import 'package:ad_gag/UI/Screens/Notification_screen/notification_screen.dart';
 import 'package:ad_gag/UI/Screens/drawer/drawer.dart';
+import 'package:ad_gag/UI/Screens/edit_profile_screen/edit_profile_screen.dart';
+import 'package:ad_gag/UI/custom_widgets/custom_button.dart';
+import 'package:ad_gag/UI/custom_widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../new_screen/new_screen.dart';
+import '../new_screen/new_screen_custommodel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,10 +18,38 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>  {
+class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController _searchController = TextEditingController();
   final GlobalKey _scaffoldKey = new GlobalKey();
   TabController? tabController;
- 
+  bool visible = false;
+
+  late List<Article> searchArticles;
+  String query = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    searchArticles = articles;
+  }
+
+  void searchBook(String query) {
+    final searchArticle = articles.where((value) {
+      final categoryLower = value.category.toLowerCase();
+      final authorLower = value.name.toLowerCase();
+      final searchLower = query.toLowerCase();
+
+      return categoryLower.contains(searchLower) ||
+          authorLower.contains(searchLower);
+    }).toList();
+
+    setState(() {
+      this.query = query;
+      this.searchArticles = searchArticle;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -25,90 +57,144 @@ class _HomeScreenState extends State<HomeScreen>  {
       child: Scaffold(
           key: _scaffoldKey,
           drawer: CustomDrawer(),
-          appBar: AppBar(
-            leading: Builder(
-              builder: (context) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    onTap: () {
-                      Scaffold.of(context).openDrawer();
+          appBar: visible == false
+              ? AppBar(
+                  leading: Builder(
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                          child: Image.asset(
+                            "assets/Images/menu.png",
+                            width: 10,
+                            height: 10,
+                          ),
+                        ),
+                      );
                     },
+                  ),
+                  title: SizedBox(
+                    width: 100,
                     child: Image.asset(
-                      "assets/Images/menu.png",
-                      width: 10,
-                      height: 10,
+                      "assets/Images/logo_blue.png",
                     ),
                   ),
-                );
-              },
-            ),
-            title: SizedBox(
-              width: 100,
-              child: Image.asset(
-                "assets/Images/logo_blue.png",
-              ),
-            ),
-            actions: [
-              const Icon(
-                Icons.search,
-                size: 25,
-                color: kGreyColor,
-              ),
-              SizedBox(width: 15.w),
-              InkWell(
-                onTap: () {
-                  Get.to(NotificationScreen());
-                },
-                child: const Icon(
-                  Icons.notifications_none,
-                  size: 25,
-                  color: kGreyColor,
+                  actions: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          visible = true;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.search,
+                        size: 25,
+                        color: kGreyColor,
+                      ),
+                    ),
+                    SizedBox(width: 10.w),
+                    InkWell(
+                      onTap: () {
+                        Get.to(NotificationScreen());
+                      },
+                      child: const Icon(
+                        Icons.notifications_none,
+                        size: 25,
+                        color: kGreyColor,
+                      ),
+                    ),
+                    SizedBox(width: 10.w),
+                    InkWell(
+                      onTap: () {
+                        Get.to(EditProfileScreen());
+                      },
+                      child: const Icon(
+                        Icons.account_circle,
+                        size: 25,
+                        color: kGreyColor,
+                      ),
+                    ),
+                    SizedBox(width: 10.w)
+                  ],
+                  backgroundColor: Colors.white,
+                  elevation: 0,
+                  bottom: const TabBar(
+                      indicatorColor: kLightBlueColor,
+                      labelColor: Colors.black,
+                      labelStyle: TextStyle(fontSize: 10, color: Colors.black),
+                      tabs: [
+                        Tab(
+                          text: "New",
+                        ),
+                        Tab(
+                          text: "Hot",
+                        ),
+                        Tab(
+                          text: "Cars",
+                        ),
+                        Tab(
+                          text: "Memes",
+                        ),
+                        Tab(
+                          text: "Girls",
+                        ),
+                        Tab(
+                          text: "Pets",
+                        ),
+                      ]),
+                )
+              : AppBar(
+                  automaticallyImplyLeading: false,
+                  backgroundColor: Colors.white,
+                  elevation: 0,
+                  title: Row(
+                    children: [
+                      Expanded(
+                          child: SearchWidget(
+                              hintText: "search",
+                              text: query,
+                              onChanged: searchBook)),
+                      buttonContainer(
+                          height: 40.h,
+                          width: 40.w,
+                          widget: Icon(
+                            Icons.close,
+                            color: Colors.black,
+                          ),
+                          radius: 20,
+                          onTap: () {
+                            setState(() {
+                              visible = false;
+                            });
+                          })
+                    ],
+                  ),
+                  actions: [],
                 ),
-              ),
-              SizedBox(width: 15.w),
-              const Icon(
-                Icons.account_circle,
-                size: 25,
-                color: kGreyColor,
-              ),
-            ],
-            backgroundColor: Colors.white,
-            elevation: 0,
-            bottom: const TabBar(
-                indicatorColor: kLightBlueColor,
-                labelColor: Colors.black,
-                labelStyle: TextStyle(fontSize: 10, color: Colors.black),
-                tabs: [
-                  Tab(
-                    text: "New",
-                  ),
-                  Tab(
-                    text: "Hot",
-                  ),
-                  Tab(
-                    text: "Cars",
-                  ),
-                  Tab(
-                    text: "Memes",
-                  ),
-                  Tab(
-                    text: "Girls",
-                  ),
-                  Tab(
-                    text: "Pets",
-                  ),
-                ]),
-          ),
           backgroundColor: const Color(0xFFFFFFFF),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              NewScreen(),
-              Text("page 2"),
-              Text("page 3"),
-              Text("page 4"),
-              Text("page 5"),
-              Text("page 6"),
+              NewScreen(
+                allerticles: searchArticles,
+              ),
+               NewScreen(
+                allerticles: searchArticles,
+              ),
+              NewScreen(
+                allerticles: searchArticles,
+              ),
+              NewScreen(
+                allerticles: searchArticles,
+              ),
+               NewScreen(
+                allerticles: searchArticles,
+              ),
+              NewScreen(
+                allerticles: searchArticles,
+              ),
             ],
           )),
     );
