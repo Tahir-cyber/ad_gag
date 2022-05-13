@@ -3,6 +3,7 @@ import 'package:ad_gag/Core/constant/custom_textfield_decoration.dart';
 import 'package:ad_gag/UI/Screens/Alert/alert_screen.dart';
 import 'package:ad_gag/UI/Screens/comment_screen/comment_screen.dart';
 import 'package:ad_gag/UI/Screens/new_screen/new_screen_viewmodel.dart';
+import 'package:ad_gag/UI/Screens/settings_screen/settings_screen.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,7 @@ class NewScreen extends StatefulWidget {
 }
 
 class _NewScreenState extends State<NewScreen> {
+  int? selectIndex;
   bool isSwitched = false;
   SharedPreferences? _preferences;
   void getPreferences() async {
@@ -42,7 +44,7 @@ class _NewScreenState extends State<NewScreen> {
   Widget build(BuildContext context) {
     print("new object");
     return Scaffold(
-      floatingActionButton: isSwitched
+      floatingActionButton: switchUploadContent != true
           ? Padding(
               padding: EdgeInsets.only(bottom: 10.h),
               child: Container(
@@ -125,18 +127,26 @@ class _NewScreenState extends State<NewScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.language,
                                           color: kGreyColor,
-                                          size: 10,
+                                          size: 15.sp,
                                         ),
-                                        const SizedBox(width: 5),
-                                        Text(
-                                          widget.allerticles[index].web,
-                                          style: kCustomTextTextStyle(
-                                              12, kGreyColor),
-                                        ),
+                                        // const SizedBox(width: 5),
+                                        // Text(
+                                        //   widget.allerticles[index].web,
+                                        //   style: kCustomTextTextStyle(
+                                        //       12, kGreyColor),
+                                        // ),
                                       ],
+                                    ),
+                                    SizedBox(
+                                      width: 10.h,
+                                    ),
+                                    Container(
+                                      height: 15,
+                                      child: VerticalDivider(
+                                          thickness: 1, color: kGreyColor),
                                     ),
                                     SizedBox(
                                       width: 10.h,
@@ -144,14 +154,14 @@ class _NewScreenState extends State<NewScreen> {
                                     Icon(
                                       Icons.location_on,
                                       color: kGreyColor,
-                                      size: 10.sp,
+                                      size: 15.sp,
                                     ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      widget.allerticles[index].location,
-                                      style:
-                                          kCustomTextTextStyle(10, kGreyColor),
-                                    )
+                                    // const SizedBox(width: 5),
+                                    // Text(
+                                    //   widget.allerticles[index].location,
+                                    //   style:
+                                    //       kCustomTextTextStyle(10, kGreyColor),
+                                    // )
                                   ],
                                 ),
                               ],
@@ -159,12 +169,25 @@ class _NewScreenState extends State<NewScreen> {
                             const Spacer(),
                             const Spacer(),
 
-                            Center(
-                              child: Image.asset(
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selectIndex = index;
+                                });
+                                print("index $selectIndex");
+                              },
+                              child: Center(
+                                  child: Image.asset(
                                 "assets/Icons/savepost.png",
+                                color: selectIndex != index
+                                    ? Colors.grey
+                                    : Color(0xFFFFCC00),
                                 height: 15.h,
                                 width: 10.w,
-                              ),
+                              )),
+                            ),
+                            SizedBox(
+                              width: 7.w,
                             ),
                             const AlertScreen()
                           ],
@@ -190,36 +213,11 @@ class _NewScreenState extends State<NewScreen> {
                                           kCustomTextTextStyle(10, kGreyColor),
                                     ),
                                     SizedBox(width: 4.w),
-                                    InkWell(
-                                      onTap: () {
-                                        Share.share(widget
-                                            .allerticles[index].name
-                                            .toString());
-                                        // Get.bottomSheet(ClipRRect(
-                                        //     borderRadius: BorderRadius.only(
-                                        //       topLeft:
-                                        //           Radius.circular(10.0),
-                                        //       topRight:
-                                        //           Radius.circular(10.0),
-                                        //     ),
-                                        //     child: Container(
-                                        //       height: 250,
-                                        //       width: double.infinity,
-                                        //       color: Colors.white,
-                                        //       child: Center(
-                                        //           child: Text(
-                                        //         "share section ToDo",
-                                        //         style: kCustomTextTextStyle(
-                                        //             30, kblackColor),
-                                        //       )),
-                                        //     )));
-                                      },
-                                      child: const Icon(
-                                        Icons.share,
-                                        size: 12,
-                                        color: kGreyColor,
-                                      ),
-                                    )
+                                    Image.asset(
+                                      "assets/Icons/category.png",
+                                      height: 15.h,
+                                      width: 15.w,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -317,10 +315,16 @@ class _NewScreenState extends State<NewScreen> {
                             )
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: shareContainer2(
-                            "share",
+                        InkWell(
+                          onTap: () {
+                            Share.share(
+                                widget.allerticles[index].name.toString());
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: shareContainer2(
+                              "share",
+                            ),
                           ),
                         )
                       ],

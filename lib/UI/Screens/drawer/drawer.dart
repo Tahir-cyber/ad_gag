@@ -8,9 +8,12 @@ import 'package:ad_gag/UI/Screens/settings_screen/settings_screen.dart';
 import 'package:ad_gag/UI/Screens/upgrade_to_premium/upgrade_to_premium.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_button.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_row.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../MyProfile/myprofile_screen.dart';
 import '../login/login_screen.dart';
@@ -196,7 +199,9 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   drawerRow(
-                    onTap: () {},
+                    onTap: () {
+                      Share.share("https://play.google.com/store/apps/");
+                    },
                     sizedBoxWidth: 20.w,
                     padding: 25.w,
                     widget: Image.asset(
@@ -250,8 +255,12 @@ class CustomDrawer extends StatelessWidget {
                 widget: Image.asset("assets/Icons/logout.png",
                     height: 25.h, width: 15.w),
                 text: "LOGOUT",
-                onPressed: () {
+                onPressed: () async {
+                  FirebaseAuth.instance.signOut();
                   Get.to(LoginScreen());
+                  SharedPreferences pref =
+                      await SharedPreferences.getInstance();
+                  pref.remove("email");
                 },
               ),
             ),

@@ -47,7 +47,7 @@ class _MyProfileTabview2State extends State<MyProfileTabview2> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 20.w, vertical: 10.h),
+                            horizontal: 0.w, vertical: 10.h),
                         //main row
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,15 +92,23 @@ class _MyProfileTabview2State extends State<MyProfileTabview2> {
                                         const Icon(
                                           Icons.language,
                                           color: kGreyColor,
-                                          size: 10,
+                                          size: 15,
                                         ),
-                                        const SizedBox(width: 5),
-                                        Text(
-                                          articles[index].web,
-                                          style: kCustomTextTextStyle(
-                                              12, kGreyColor),
-                                        ),
+                                        // const SizedBox(width: 5),
+                                        // Text(
+                                        //   articles[index].web,
+                                        //   style: kCustomTextTextStyle(
+                                        //       12, kGreyColor),
+                                        // ),
                                       ],
+                                    ),
+                                    SizedBox(
+                                      width: 10.h,
+                                    ),
+                                    Container(
+                                      height: 15,
+                                      child: VerticalDivider(
+                                          thickness: 1, color: kGreyColor),
                                     ),
                                     SizedBox(
                                       width: 10.h,
@@ -108,14 +116,14 @@ class _MyProfileTabview2State extends State<MyProfileTabview2> {
                                     Icon(
                                       Icons.location_on,
                                       color: kGreyColor,
-                                      size: 10.sp,
+                                      size: 15.sp,
                                     ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      articles[index].location,
-                                      style:
-                                          kCustomTextTextStyle(10, kGreyColor),
-                                    )
+                                    // const SizedBox(width: 5),
+                                    // Text(
+                                    //   articles[index].location,
+                                    //   style:
+                                    //       kCustomTextTextStyle(10, kGreyColor),
+                                    // )
                                   ],
                                 ),
                               ],
@@ -138,24 +146,15 @@ class _MyProfileTabview2State extends State<MyProfileTabview2> {
                         height: 10.h,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        padding: EdgeInsets.symmetric(horizontal: 5.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                              height: 30.h,
-                              width: 100.w,
-                              child: SingleChildScrollView(
-                                physics: const ScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                child: Text(
-                                  articles[index].title,
-                                  style: kBlackTextTextStyle(16),
-                                ),
-                              ),
+                            marqueeContainer(
+                              articles[index].title,
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10.w),
+                              padding: EdgeInsets.symmetric(horizontal: 5.w),
                               child: SizedBox(
                                 child: Row(
                                   children: [
@@ -164,11 +163,14 @@ class _MyProfileTabview2State extends State<MyProfileTabview2> {
                                       style:
                                           kCustomTextTextStyle(10, kGreyColor),
                                     ),
-                                    const Icon(
-                                      Icons.share,
-                                      size: 10,
-                                      color: kGreyColor,
-                                    )
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
+                                    Image.asset(
+                                      "assets/Icons/category.png",
+                                      height: 15.h,
+                                      width: 15.w,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -199,7 +201,7 @@ class _MyProfileTabview2State extends State<MyProfileTabview2> {
                   height: 10.h,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.symmetric(horizontal: 0.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

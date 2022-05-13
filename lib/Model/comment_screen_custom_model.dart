@@ -143,34 +143,27 @@ class NotificationCustomMOdel {
     required this.imageUrl,
     required this.time,
   });
-
-
 }
 
-List<NotificationCustomMOdel> notificationCustomModel=[
+List<NotificationCustomMOdel> notificationCustomModel = [
   NotificationCustomMOdel(
     name: 'James Dean',
     desc: 'Certainty listening no behavior existence assurance situation',
     imageUrl: 'assets/Images/1.png',
     time: "22m",
   ),
-
   NotificationCustomMOdel(
     name: 'Adam Scott',
     desc: 'Certainty listening no behavior existence assurance situation',
     imageUrl: 'assets/Images/2.png',
     time: "8hrs",
   ),
-
   NotificationCustomMOdel(
     name: 'Natasha Romanov',
     desc: 'Certainty listening no behavior existence assurance situation',
     imageUrl: 'assets/Images/3.png',
     time: "6hrs",
   ),
-
-  
-
   NotificationCustomMOdel(
     name: 'Amelia',
     desc: 'Certainty listening no behavior existence assurance situation',

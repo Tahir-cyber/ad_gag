@@ -1,13 +1,12 @@
 import 'package:ad_gag/Core/constant/colors.dart';
-import 'package:ad_gag/Model/comment_screen_custom_model.dart';
-import 'package:ad_gag/UI/custom_widgets/custom_reply_container.dart';
+import 'package:ad_gag/UI/custom_widgets/comments_custom/comment_section.dart';
+import 'package:ad_gag/UI/custom_widgets/comments_custom/comment_text_field.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../Core/constant/custom_textfield_decoration.dart';
 import '../../custom_widgets/custom_container.dart';
-import '../../custom_widgets/custom_textfield.dart';
 import '../Alert/alert_screen.dart';
 
 class CommentOnPostScreen extends StatefulWidget {
@@ -276,163 +275,19 @@ class _CommentOnPostScreenState extends State<CommentOnPostScreen> {
                 SizedBox(height: 10.h),
                 //><><><><>   second portion <><><><><<><//
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage("assets/Images/6.png"),
-                            radius: 30.h,
-                          ),
-                          Spacer(flex: 4),
-                          SizedBox(
-                            height: 50.h,
-                            width: 0.75.sw,
-                            child: GeneralTextField(
-                              padding: 0.w,
-                              hintText: "Post Comment....",
-                              controller: commentController,
-                              suffixIcon: Icons.send,
-                              prefixIcon: Icons.camera_alt,
-                            ),
-                          ),
-                          Spacer()
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      Divider(),
-
-                      //second list view comment section
-                      SizedBox(
-                        height: 500.h,
-                        width: double.infinity,
-                        child: ListView.builder(
-                            itemCount: commentsModel.length,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                decoration: const BoxDecoration(
-                                  color: kwhiteColor,
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          color: kGreyColor, width: 1)),
-                                ),
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundImage: AssetImage(
-                                          commentsModel[index].imageUrl),
-                                      radius: 30.h,
-                                    ),
-                                    Spacer(
-                                      flex: 2,
-                                    ),
-                                    SizedBox(
-                                      width: 0.73.sw,
-                                      height: 100.h,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Row(children: [
-                                            Text(
-                                              commentsModel[index].name,
-                                              style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                              commentsModel[index].date,
-                                              style: kCustomTextTextStyle(
-                                                  10, kGreyColor),
-                                            ),
-                                            Spacer(),
-                                            Image.asset(
-                                              "assets/Images/upvote.png",
-                                              height: 10.h,
-                                              width: 10.w,
-                                            ),
-                                            SizedBox(width: 3.w),
-                                            Text(
-                                              commentsModel[index]
-                                                  .view
-                                                  .toString(),
-                                              style: kCustomTextTextStyle(
-                                                  10, kGreyColor),
-                                            ),
-                                            SizedBox(width: 10.w),
-                                            Image.asset(
-                                              "assets/Images/downvote.png",
-                                              height: 10.h,
-                                              width: 10.w,
-                                            ),
-                                          ]),
-                                          SizedBox(height: 3),
-                                          Row(
-                                            children: [
-                                              SizedBox(
-                                                width: 0.45.sw,
-                                                child: Text(
-                                                  commentsModel[index].desc,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: kCustomTextTextStyle(
-                                                      10, kGreyColor),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(height: 3),
-                                          selectIndex != index
-                                              ? Row(
-                                                  children: [
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          selectIndex = index;
-                                                        });
-                                                        print(
-                                                            ">>>>>>>>>>>>>$selectIndex");
-                                                      },
-                                                      child: ReplyContainer2(
-                                                          iconColor: kGreyColor,
-                                                          color: kGreyColor,
-                                                          iconData: Icons.reply,
-                                                          text: "Reply"),
-                                                    ),
-                                                    SizedBox(width: 6.w),
-                                                    ReplyContainer(
-                                                        iconData: Icons
-                                                            .arrow_drop_down,
-                                                        text: "view 27 reply")
-                                                  ],
-                                                )
-                                              : ReplyContainer3(
-                                                  replyontap: () {
-                                                    setState(() {
-                                                      selectIndex != index
-                                                          ? selectIndex = index
-                                                          : selectIndex = -1;
-                                                    });
-
-                                                    print("send tapped");
-                                                  },
-                                                  hinttext: "@asebila",
-                                                  controller: replyController),
-                                        ],
-                                      ),
-                                    ),
-                                    Spacer()
-                                  ],
-                                ),
-                              );
-                            }),
-                      ),
-                    ],
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: CommentTextField(),
+                ),
+                SizedBox(height: 10.h),
+                Container(
+                  child: Divider(
+                    thickness: 1,
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: SizedBox(height: 500.h, child: CommentSection()),
+                )
               ],
             ),
           ),

@@ -17,11 +17,13 @@ class GeneralTextField extends StatefulWidget {
   IconData? prefixIcon;
   double? padding;
   VoidCallback? replyontap;
+  VoidCallback? ontapSuffix;
   Color? prefIconColor;
   double? contenthorizontalpadding;
   double? contentverticalpadding;
 
   GeneralTextField({
+    this.ontapSuffix,
     this.contenthorizontalpadding,
     this.contentverticalpadding,
     this.replyontap,
@@ -57,19 +59,26 @@ class _GeneralTextFieldState extends State<GeneralTextField> {
         ),
         controller: widget.controller,
         decoration: InputDecoration(
-          prefixIcon: Icon(
-            widget.prefixIcon,
-            color: widget.prefIconColor,
+          prefixIcon: InkWell(
+            onTap: widget.ontapSuffix,
+            child: Icon(
+              widget.prefixIcon,
+              color: widget.prefIconColor,
+            ),
           ),
-          suffixIcon:
-              InkWell(onTap: widget.replyontap, child: Icon(widget.suffixIcon)),
+          suffixIcon: InkWell(
+              onTap: widget.replyontap,
+              child: Icon(
+                widget.suffixIcon,
+                color: kGreyColor,
+              )),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none),
           // isCollapsed: false,
           // isDense: false,
           contentPadding:
-              EdgeInsets.symmetric(horizontal:25.w, vertical: 10.h),
+              EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none),
@@ -88,14 +97,18 @@ class _GeneralTextFieldState extends State<GeneralTextField> {
 
 class PasswordCustomTextField extends StatefulWidget {
   final String hintText;
+
   final TextEditingController controller;
   final Widget? trailingIcon;
   final FormFieldValidator<String>? validator;
   TextInputType? textInputType;
   void Function(String?)? onsaved;
   final bool obsecuretext;
+  IconData? prefixIcon;
+  Color? prefIconColor;
 
   PasswordCustomTextField({
+    this.prefixIcon,
     this.obsecuretext = false,
     this.validator,
     this.textInputType,
@@ -111,11 +124,14 @@ class PasswordCustomTextField extends StatefulWidget {
 }
 
 class _PasswordCustomTextFieldState extends State<PasswordCustomTextField> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: TextFormField(
+        
         obscureText: widget.obsecuretext,
         onSaved: widget.onsaved,
         keyboardType: widget.textInputType,
@@ -125,6 +141,10 @@ class _PasswordCustomTextFieldState extends State<PasswordCustomTextField> {
         ),
         controller: widget.controller,
         decoration: InputDecoration(
+          prefixIcon: Icon(
+            widget.prefixIcon,
+            color: widget.prefIconColor,
+          ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide.none),

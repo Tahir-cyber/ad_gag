@@ -73,8 +73,8 @@ Widget ImageContainer(
   );
 }
 
-Widget editProfileContainer(
-    String text, double radius, Color color, double height, double width,bool onToggle) {
+Widget editProfileContainer(String text, double radius, Color color,
+    double height, double width, bool onToggle) {
   return Container(
     padding: EdgeInsets.only(left: 20.w),
     height: height,
@@ -92,7 +92,10 @@ Widget editProfileContainer(
               fontSize: 12,
             )),
         Spacer(),
-       CustomSwitch2(onToggle: onToggle)
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          child: CustomSwitch2(onToggle: onToggle),
+        )
         // CustomSwitchButton(onToggle:onToggle ,onToggleChanged: ,)
       ],
     ),
@@ -131,7 +134,7 @@ Widget marqueeContainer(String text) {
     height: 20.h,
     width: 200.w,
     child: Marquee(
-      text:text,
+      text: text,
       style: kBlackTextTextStyle(16),
       scrollAxis: Axis.horizontal,
       crossAxisAlignment: CrossAxisAlignment.start,

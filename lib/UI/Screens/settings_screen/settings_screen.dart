@@ -34,9 +34,19 @@ class _SettingsState extends State<Settings> {
     setState(() {
       switchUploadContent = _prefs!.getBool('switch') ?? false;
       switchsavePost = _prefs!.getBool('switch2') ?? false;
+      switchBadgeToggle = _prefs!.getBool('switch3') ?? false;
+      switchTurnOffAll = _prefs!.getBool('switch4') ?? false;
+      switchuploadAlert = _prefs!.getBool('switch5') ?? false;
+      switchUpvoted = _prefs!.getBool('switch6') ?? false;
+      switchComments = _prefs!.getBool('switch7') ?? false;
     });
     print("upload content $switchUploadContent");
     print("save post $switchsavePost");
+    print("badge $switchBadgeToggle");
+    print("turn all $switchTurnOffAll");
+    print("upload $switchuploadAlert");
+    print("upvoted $switchUpvoted");
+    print("comments $switchComments");
   }
 
   late List<Article> searchArticles;
@@ -48,9 +58,6 @@ class _SettingsState extends State<Settings> {
 
     ;
   }
-
- 
-  
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +118,7 @@ class _SettingsState extends State<Settings> {
                   switchBadgeToggle = value;
                 });
                 _prefs = await SharedPreferences.getInstance();
-                _prefs.setBool("switch", switchBadgeToggle!);
+                _prefs.setBool("switch3", switchBadgeToggle!);
 
                 print("buuton3 ${switchBadgeToggle}");
               },
@@ -131,7 +138,7 @@ class _SettingsState extends State<Settings> {
                   switchTurnOffAll = value;
                 });
                 _prefs = await SharedPreferences.getInstance();
-                _prefs.setBool("switch", switchTurnOffAll!);
+                _prefs.setBool("switch4", switchTurnOffAll!);
 
                 print("buuton3 ${switchTurnOffAll}");
               },
@@ -146,7 +153,7 @@ class _SettingsState extends State<Settings> {
                   switchuploadAlert = value;
                 });
                 _prefs = await SharedPreferences.getInstance();
-                _prefs.setBool("switch", switchuploadAlert!);
+                _prefs.setBool("switch5", switchuploadAlert!);
 
                 print("buutonallert ${switchuploadAlert}");
               },
@@ -161,7 +168,7 @@ class _SettingsState extends State<Settings> {
                   switchUpvoted = value;
                 });
                 _prefs = await SharedPreferences.getInstance();
-                _prefs.setBool("switch", switchUpvoted!);
+                _prefs.setBool("switch6", switchUpvoted!);
 
                 print("buutonupvooted ${switchUpvoted}");
               },
@@ -176,7 +183,7 @@ class _SettingsState extends State<Settings> {
                   switchComments = value;
                 });
                 _prefs = await SharedPreferences.getInstance();
-                _prefs.setBool("switch", switchComments!);
+                _prefs.setBool("switch7", switchComments!);
 
                 print("buutoncomments ${switchComments}");
               },

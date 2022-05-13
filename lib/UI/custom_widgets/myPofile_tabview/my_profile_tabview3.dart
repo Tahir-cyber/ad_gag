@@ -16,6 +16,7 @@ class _MyProfileTabview3State extends State<MyProfileTabview3> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: 10,
       itemBuilder: ((context, index) {
         return Column(
           children: [

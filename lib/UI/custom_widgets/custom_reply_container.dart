@@ -80,8 +80,9 @@ class _ReplyContainer2State extends State<ReplyContainer2> {
 class ReplyContainer3 extends StatefulWidget {
   String hinttext;
   VoidCallback? replyontap;
+  VoidCallback? ontapSuffix;
   TextEditingController controller;
-  ReplyContainer3({Key? key, required this.hinttext, required this.controller,this.replyontap})
+  ReplyContainer3({Key? key, required this.hinttext, required this.controller,this.replyontap,this.ontapSuffix})
       : super(key: key);
 
   @override
@@ -110,6 +111,7 @@ class _ReplyContainer3State extends State<ReplyContainer3> {
             controller: widget.controller,
             suffixIcon: Icons.send,
             prefixIcon: Icons.camera_alt,
+            ontapSuffix:widget.ontapSuffix ,
           ),
         )
       ],
