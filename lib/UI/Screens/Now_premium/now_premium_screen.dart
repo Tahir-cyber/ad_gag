@@ -1,3 +1,4 @@
+import 'package:ad_gag/UI/Screens/phoneLogin/phonelogin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,7 +56,9 @@ class _NowPremiumState extends State<NowPremium> {
               "Get the Premium App Features \n and Unlock Everything",
               style: kCustomTextTextStyle(18, kyellowColor),
             ),
-            SizedBox(height: 20.h),
+            SizedBox(
+              height: 15.h,
+            ),
             Center(
               child: Text(
                 "You are premium User now",
@@ -64,7 +67,7 @@ class _NowPremiumState extends State<NowPremium> {
             ),
             SizedBox(height: 15.h),
             Center(child: Image.asset("assets/Icons/diamond.png")),
-            Spacer(),
+            SizedBox(height: 30.h),
             drawerRow(
                 sizedBoxWidth: 15,
                 padding: 20,
@@ -76,7 +79,7 @@ class _NowPremiumState extends State<NowPremium> {
                 ),
                 text: "Upload your content"),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             drawerRow(
                 sizedBoxWidth: 15,
@@ -88,7 +91,9 @@ class _NowPremiumState extends State<NowPremium> {
                   width: 15,
                 ),
                 text: "Link website in posts"),
-            SizedBox(height: 20.h),
+            SizedBox(
+              height: 15.h,
+            ),
             drawerRow(
                 sizedBoxWidth: 15,
                 padding: 20,
@@ -100,7 +105,7 @@ class _NowPremiumState extends State<NowPremium> {
                 ),
                 text: "Link company location in posts"),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             drawerRow(
                 sizedBoxWidth: 15,
@@ -113,7 +118,7 @@ class _NowPremiumState extends State<NowPremium> {
                 ),
                 text: "Get pro badge on profile"),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             drawerRow(
                 sizedBoxWidth: 15,
@@ -126,7 +131,7 @@ class _NowPremiumState extends State<NowPremium> {
                 ),
                 text: "Get your company or brand verified"),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             drawerRow(
                 sizedBoxWidth: 15,
@@ -139,7 +144,7 @@ class _NowPremiumState extends State<NowPremium> {
                 ),
                 text: "Save countless posts"),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             drawerRow(
                 sizedBoxWidth: 15,
@@ -151,7 +156,24 @@ class _NowPremiumState extends State<NowPremium> {
                   width: 15,
                 ),
                 text: "Access content analytics"),
-            Spacer()
+            SizedBox(
+              height: 30.h,
+            ),
+            Center(
+              child: buttonContainer3(
+                  color: kLightBlueColor,
+                  height: 40,
+                  width: 0.7.sw,
+                  widget: Center(
+                      child: Text(
+                    "Premium User Sign UP",
+                    style: kCustomTextTextStyle(14, kwhiteColor),
+                  )),
+                  radius: 30,
+                  onTap: () {
+                    Get.to(PhoneLogin());
+                  }),
+            )
           ],
         ),
       ),

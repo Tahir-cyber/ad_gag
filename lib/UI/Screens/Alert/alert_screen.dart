@@ -1,6 +1,7 @@
 import 'package:ad_gag/Core/constant/custom_textfield_decoration.dart';
 import 'package:ad_gag/UI/custom_widgets/alertbox_row.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_button.dart';
+import 'package:ad_gag/UI/custom_widgets/switch_Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -180,6 +181,37 @@ Widget alertDisalogue(context) {
               ))
         ],
       ),
+    ),
+  );
+}
+
+Widget boardAlertBox(
+    context, bool onToggle, void Function(bool) onToggleChanged) {
+  return Container(
+    height: 190.h,
+    width: 100.w,
+    decoration: const BoxDecoration(
+      shape: BoxShape.rectangle,
+      color: Colors.white,
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        alertBoxRow(Icons.link, "Copy Link"),
+        Spacer(),
+        alertBoxRow(Icons.info_outline, "About"),
+        Spacer(),
+        Row(
+          children: [
+            alertBoxRow(Icons.notifications, "Notification"),
+            Spacer(),
+            CustomSwitchButton3(
+                onToggle: onToggle, onToggleChanged: onToggleChanged)
+          ],
+        ),
+        Spacer(),
+        alertBoxRow(Icons.cancel_outlined, "Leave Board"),
+      ],
     ),
   );
 }

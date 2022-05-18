@@ -11,7 +11,7 @@ class Article {
   bool isSelected;
 
   Article({
-   required this.isSelected,
+    required this.isSelected,
     required this.category,
     required this.location,
     required this.name,
@@ -157,4 +157,51 @@ List<Article> articles = [
     date: "25hrs",
     imageUrl: 'assets/Images/john.png',
   ),
+];
+
+class Boards {
+  String title;
+  String Subtitle;
+  String iamgeUrl;
+
+  Boards({required this.title, required this.Subtitle, required this.iamgeUrl});
+}
+
+List<Boards> boards = [
+  Boards(
+      title: "Party And Fun",
+      Subtitle: "1532 Memeber",
+      iamgeUrl: "assets/Images/b1.png"),
+  Boards(
+      title: "cHAT AT NIGHt",
+      Subtitle: "1276 Memeber",
+      iamgeUrl: "assets/Images/b2.png"),
+  Boards(
+      title: "Love & Romance",
+      Subtitle: "1976 Memeber",
+      iamgeUrl: "assets/Images/b3.png"),
+  Boards(
+      title: "Motivation",
+      Subtitle: "6799 Memeber",
+      iamgeUrl: "assets/Images/b4.png"),
+  Boards(
+      title: "Technology",
+      Subtitle: "27368 Memeber",
+      iamgeUrl: "assets/Images/b5.png"),
+  Boards(
+      title: "Sports",
+      Subtitle: "9074 Memeber",
+      iamgeUrl: "assets/Images/b6.png"),
+  Boards(
+      title: "Social Talking",
+      Subtitle: "2837 Memeber",
+      iamgeUrl: "assets/Images/b7.png"),
+  Boards(
+      title: "Success & Failure",
+      Subtitle: "87904 Memeber",
+      iamgeUrl: "assets/Images/b8.png"),
+  Boards(
+      title: "Helping Poor",
+      Subtitle: "1532 Memeber",
+      iamgeUrl: "assets/Images/b9.png"),
 ];

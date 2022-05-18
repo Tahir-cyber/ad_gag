@@ -21,8 +21,14 @@ class GeneralTextField extends StatefulWidget {
   Color? prefIconColor;
   double? contenthorizontalpadding;
   double? contentverticalpadding;
+  double focusRadius;
+  double enabledBorderRadius;
+  Color? suffixIconColor;
 
   GeneralTextField({
+    this.suffixIconColor,
+    this.focusRadius = 30,
+    this.enabledBorderRadius = 30,
     this.ontapSuffix,
     this.contenthorizontalpadding,
     this.contentverticalpadding,
@@ -70,17 +76,19 @@ class _GeneralTextFieldState extends State<GeneralTextField> {
               onTap: widget.replyontap,
               child: Icon(
                 widget.suffixIcon,
-                color: kGreyColor,
+                color: widget.suffixIconColor != null
+                    ? widget.suffixIconColor
+                    : kGreyColor,
               )),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(widget.focusRadius),
               borderSide: BorderSide.none),
           // isCollapsed: false,
           // isDense: false,
           contentPadding:
               EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(widget.enabledBorderRadius),
               borderSide: BorderSide.none),
           filled: true,
           fillColor: Color(0xFFF0F0F0),
@@ -124,14 +132,11 @@ class PasswordCustomTextField extends StatefulWidget {
 }
 
 class _PasswordCustomTextFieldState extends State<PasswordCustomTextField> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: TextFormField(
-        
         obscureText: widget.obsecuretext,
         onSaved: widget.onsaved,
         keyboardType: widget.textInputType,

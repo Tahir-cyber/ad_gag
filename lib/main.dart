@@ -1,8 +1,6 @@
 import 'package:ad_gag/UI/Screens/Sign_up/sign_up_viewmodel.dart';
 import 'package:ad_gag/UI/Screens/login/login_screen_viewmodel.dart';
 import 'package:ad_gag/UI/Screens/splash_screen.dart';
-import 'package:ad_gag/comment_practice/comment.dart';
-import 'package:ad_gag/comment_practice/comment_practice.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,11 +33,8 @@ class AdGig extends StatelessWidget {
             create: (_) => SignUpViewModel()),
         ChangeNotifierProvider<LoginScreenViewModel>(
           create: (_) => LoginScreenViewModel(),
-          
-
         ),
-        ChangeNotifierProvider<Text11>(
-            create: (_) => Text11()),
+        ChangeNotifierProvider<Text11>(create: (_) => Text11()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(422, 776),

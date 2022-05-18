@@ -8,7 +8,9 @@ class CustomSwitchButton extends StatefulWidget {
   bool onToggle;
   void Function(bool) onToggleChanged;
 
-  CustomSwitchButton({Key? key, required this.onToggle,required this.onToggleChanged}) : super(key: key);
+  CustomSwitchButton(
+      {Key? key, required this.onToggle, required this.onToggleChanged})
+      : super(key: key);
 
   @override
   State<CustomSwitchButton> createState() => _CustomSwitchButtonState();
@@ -21,23 +23,21 @@ class _CustomSwitchButtonState extends State<CustomSwitchButton> {
   Widget build(BuildContext context) {
     return Container(
         child: FlutterSwitch(
-      value: widget.onToggle,
-      height: 20.h,
-      width: 50.w,
-      toggleSize: 20.h,
-      activeColor: kwhiteColor,
-      inactiveColor: kwhiteColor,
-      inactiveToggleColor: kGreyColor,
-      activeToggleColor: kLightBlueColor,
-      onToggle: widget.onToggleChanged
-    ));
+            value: widget.onToggle,
+            height: 20.h,
+            width: 50.w,
+            toggleSize: 20.h,
+            activeColor: kwhiteColor,
+            inactiveColor: kwhiteColor,
+            inactiveToggleColor: kGreyColor,
+            activeToggleColor: kLightBlueColor,
+            onToggle: widget.onToggleChanged));
   }
 }
 
-
 class CustomSwitch2 extends StatefulWidget {
-   bool onToggle;
-  CustomSwitch2({Key? key,required this.onToggle}) : super(key: key);
+  bool onToggle;
+  CustomSwitch2({Key? key, required this.onToggle}) : super(key: key);
 
   @override
   State<CustomSwitch2> createState() => _CustomSwitch2State();
@@ -63,9 +63,40 @@ class _CustomSwitch2State extends State<CustomSwitch2> {
         });
         _prefs = await SharedPreferences.getInstance();
         _prefs.setBool("switchcontent", widget.onToggle);
-       
+
         print("buuton${widget.onToggle}");
       },
     ));
+  }
+}
+
+class CustomSwitchButton3 extends StatefulWidget {
+  bool onToggle;
+  void Function(bool) onToggleChanged;
+
+  CustomSwitchButton3(
+      {Key? key, required this.onToggle, required this.onToggleChanged})
+      : super(key: key);
+
+  @override
+  State<CustomSwitchButton3> createState() => _CustomSwitchButton3State();
+}
+
+class _CustomSwitchButton3State extends State<CustomSwitchButton3> {
+  SharedPreferences? prefs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: FlutterSwitch(
+            value: widget.onToggle,
+            height: 20.h,
+            width: 50.w,
+            toggleSize: 20.h,
+            activeColor: kLightBlueColor,
+            inactiveColor: kGreyColor,
+            inactiveToggleColor: kwhiteColor,
+            activeToggleColor: kwhiteColor,
+            onToggle: widget.onToggleChanged));
   }
 }

@@ -11,6 +11,8 @@ import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
+import '../home_screen/home_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -97,7 +99,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             PasswordCustomTextField(
                               hintText: "Password",
                               controller: passwordController,
-                              
                               validator: (value) {
                                 RegExp regex = RegExp(r'^.{6,}$');
                                 if (value!.isEmpty) {
@@ -132,7 +133,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     if (_formKey.currentState!.validate()) {
                                       value.logIn(emailcontroller.text,
                                           passwordController.text, context);
+                                      
                                     }
+
                                     passwordController.clear();
                                   }),
                             ),

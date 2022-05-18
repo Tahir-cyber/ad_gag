@@ -334,3 +334,25 @@ Widget buttonContainer2({
     ),
   );
 }
+
+Widget buttonContainer3({
+  required Widget widget,
+  required double radius,
+
+  required VoidCallback onTap,
+  required color,
+  double? height,
+  double? width,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+     
+      height: height != null ? height : 30,
+      width: width != null ? width : 30,
+      child: widget,
+      decoration: BoxDecoration(
+       color: color, borderRadius: BorderRadius.circular(radius)),
+    ),
+  );
+}

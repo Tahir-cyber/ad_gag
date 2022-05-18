@@ -4,10 +4,12 @@ import 'package:ad_gag/UI/Screens/drawer/drawer.dart';
 import 'package:ad_gag/UI/Screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:ad_gag/UI/custom_widgets/custom_button.dart';
 import 'package:ad_gag/UI/custom_widgets/search_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../boards/boards_screen.dart';
 import '../new_screen/new_screen.dart';
 import '../new_screen/new_screen_custommodel.dart';
 
@@ -53,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 7,
       child: Scaffold(
           key: _scaffoldKey,
           drawer: CustomDrawer(),
@@ -121,11 +123,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                   backgroundColor: Colors.white,
                   elevation: 0,
-                  bottom: const TabBar(
+                  bottom: TabBar(
+                      labelPadding: EdgeInsets.symmetric(horizontal: 15.0.w),
+                      isScrollable: true,
+                      physics: ScrollPhysics(),
                       indicatorColor: kLightBlueColor,
                       labelColor: Colors.black,
                       labelStyle: TextStyle(fontSize: 10, color: Colors.black),
                       tabs: [
+                        Tab(
+                          text: "Boards",
+                        ),
                         Tab(
                           text: "New",
                         ),
@@ -177,19 +185,20 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: const Color(0xFFFFFFFF),
           body: TabBarView(
             children: [
-              NewScreen(
-                allerticles: searchArticles,
-              ),
-               NewScreen(
-                allerticles: searchArticles,
-              ),
+              BoardsScreen(),
               NewScreen(
                 allerticles: searchArticles,
               ),
               NewScreen(
                 allerticles: searchArticles,
               ),
-               NewScreen(
+              NewScreen(
+                allerticles: searchArticles,
+              ),
+              NewScreen(
+                allerticles: searchArticles,
+              ),
+              NewScreen(
                 allerticles: searchArticles,
               ),
               NewScreen(

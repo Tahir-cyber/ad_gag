@@ -129,7 +129,7 @@ class _NewScreenState extends State<NewScreen> {
                                       children: [
                                         Icon(
                                           Icons.language,
-                                          color: kGreyColor,
+                                          color: kLightBlueColor,
                                           size: 15.sp,
                                         ),
                                         // const SizedBox(width: 5),
@@ -153,7 +153,7 @@ class _NewScreenState extends State<NewScreen> {
                                     ),
                                     Icon(
                                       Icons.location_on,
-                                      color: kGreyColor,
+                                      color: kLightBlueColor,
                                       size: 15.sp,
                                     ),
                                     // const SizedBox(width: 5),

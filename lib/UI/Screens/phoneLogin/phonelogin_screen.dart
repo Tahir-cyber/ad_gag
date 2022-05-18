@@ -60,6 +60,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
             ),
             SizedBox(height: 15.h),
             GeneralTextField(
+              textInputType: TextInputType.phone,
               padding: 20.w,
               controller: phoneController,
               hintText: "Phone Number",
@@ -82,7 +83,9 @@ class _PhoneLoginState extends State<PhoneLogin> {
               child: customButton1(
                   text: "SIGN UP",
                   onPressed: () {
-                    Get.to(OtpVerificationScreen());
+                    Get.to(OtpVerificationScreen(
+                      mobileNumber: phoneController.text,
+                    ));
                   }),
             ),
             SizedBox(height: 53.h),

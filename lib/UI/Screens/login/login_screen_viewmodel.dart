@@ -1,10 +1,11 @@
 import 'package:ad_gag/Core/constant/colors.dart';
-import 'package:ad_gag/UI/Screens/home_screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../home_screen/home_screen.dart';
 
 class LoginScreenViewModel extends ChangeNotifier {
   final _auth = FirebaseAuth.instance;
@@ -28,11 +29,11 @@ class LoginScreenViewModel extends ChangeNotifier {
             (context),
             MaterialPageRoute(builder: (context) => const HomeScreen()),
             (route) => false);
+        loading = false;
+        notifyListeners();
       });
       pref = await SharedPreferences.getInstance();
       pref.setString("email", email);
-      loading = false;
-      notifyListeners();
     } on FirebaseAuthException catch (error) {
       loading = false;
 
